@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@import "../styles/design-tokens.css";
+
+@theme inline {
+  --color-wine-900: var(--wine-900); --color-wine-800: var(--wine-800); --color-wine-700: var(--wine-700);
+  --color-yellow-title: var(--yellow-title); --color-yellow-cta: var(--yellow-cta);
+  --color-red-button: var(--red-button); --color-red-button-alt: var(--red-button-alt);
+  --color-red-splash: var(--red-splash); --color-red-splash-dark: var(--red-splash-dark);
+  --color-cream-section: var(--cream-section); --color-cream-card: var(--cream-card);
+  --color-wood: var(--wood); --color-ink: var(--ink);
+  --font-display: var(--font-display); --font-body: var(--font-body); --font-script: var(--font-script);
+  --radius-sm: var(--r-sm); --radius-md: var(--r-md); --radius-lg: var(--r-lg);
+  --shadow-card: var(--shadow-card); --shadow-photo: var(--shadow-photo); --shadow-button: var(--shadow-button);
+  --breakpoint-md: 768px; --breakpoint-lg: 1024px; --breakpoint-2xl: 1440px;
+}
+
+/* DS .container — substitui o utilitário container padrão do Tailwind */
+@utility container {
+  width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
+}
+
+@layer base {
+  html { overflow-x: clip; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-stopped { overflow: clip; }
+  body {
+    margin: 0; padding: var(--frame); background: var(--frame-gradient); background-attachment: fixed;
+    font-family: var(--font-body); font-size: var(--fs-body); line-height: var(--lh-body); color: var(--ink);
+    overflow-x: clip; -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; }
+  :focus-visible { outline: 3px solid var(--yellow-title); outline-offset: 3px; }
+}
+
+@layer components {
+  /* DS: .page — cream sheet inside the gradient frame. overflow:clip (not hidden) keeps pinning safe. */
+  .page { background: var(--cream-section); border-radius: var(--r-md); overflow: clip; }
+
+  /* DS buttons (static styles + DS hover). GSAP adds the press/magnet interaction on transform x/scale. */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+    font-family: var(--font-body); font-weight: 700; font-size: var(--fs-button); letter-spacing: .06em;
+    text-transform: uppercase; padding: var(--s-4) var(--s-6); border-radius: var(--r-pill); border: 0;
+    cursor: pointer; text-decoration: none; min-height: 48px; white-space: nowrap;
+  }
+  .btn--primary { background: var(--red-button); color: var(--white); box-shadow: var(--shadow-button); }
+  .btn--cta { background: var(--yellow-cta); color: var(--ink); }
+  .btn--secondary { background: var(--red-button-alt); color: var(--white); }
+
+  .section { padding: var(--s-9) 0; }
+  .section__title {
+    font-family: var(--font-display); font-size: var(--fs-h2); line-height: var(--lh-heading);
+    text-transform: uppercase; color: var(--ink); text-align: center; margin: 0 0 var(--s-7); letter-spacing: .02em;
+  }
+  .card { background: var(--cream-card); border-radius: var(--r-lg); box-shadow: var(--shadow-card); }
+  .card__img { border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-photo); border: 6px solid var(--white); }
+  .card__title { font-family: var(--font-display); font-size: var(--fs-h3); text-transform: uppercase; line-height: var(--lh-heading); letter-spacing: .02em; }
+  .floating { position: absolute; pointer-events: none; width: 90px; height: auto; }
+  @media (max-width:767px){ .section { padding: var(--s-8) 0; } .floating { width: 56px; } }
+}
+
+/* Hover lift from the DS (.btn:hover translateY(-2px)) — applied with CSS translate so it
+   never collides with the GSAP transform used for the press interaction. */
+@media (hover:hover) and (prefers-reduced-motion: no-preference) {
+  .btn { transition: translate .15s; }
+  .btn:hover { translate: 0 -2px; }
+}
+
+/* Pre-paint hiding for hero intro (set by inline script only when motion is allowed).
+   GSAP reveals these with autoAlpha. */
+html.motion-ok [data-intro] { visibility: hidden; }

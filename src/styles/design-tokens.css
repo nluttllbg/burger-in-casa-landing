@@ -1,0 +1,20 @@
+/* Burger in Casa — Design System v1 (19/11/2026). Mirror of docs/design-system/variables.css */
+:root{
+  --frame-gradient: linear-gradient(180deg,#ECA33F 0%,#A62F25 100%);
+  --wine-900:#581010; --wine-800:#701818; --wine-700:#782820;
+  --yellow-title:#F8B010; --yellow-cta:#F0A818;
+  --red-button:#D83020; --red-button-alt:#D84028; --red-splash:#B02018; --red-splash-dark:#881810;
+  --cream-section:#F7F2DB; --cream-card:#F8EFD6;
+  --mustard-gradient: linear-gradient(90deg,#F49D14 0%,#EB8919 100%);
+  --wood:#84614B; --ink:#020000; --white:#FFFFFF;
+  --font-display: var(--font-anton),'Bebas Neue',Impact,sans-serif;
+  --font-body: var(--font-poppins),'Montserrat',Arial,sans-serif;
+  --font-script: var(--font-pacifico),cursive;
+  --fs-hero:clamp(44px,7vw,96px); --fs-h2:clamp(30px,4vw,48px); --fs-h3:22px; --fs-body:16px; --fs-small:14px; --fs-button:15px;
+  --lh-display:1; --lh-heading:1.15; --lh-body:1.6;
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px; --s-10:128px;
+  --r-sm:6px; --r-md:12px; --r-lg:20px; --r-pill:999px;
+  --shadow-card:0 10px 30px rgba(88,16,16,.18); --shadow-button:0 6px 0 #881810; --shadow-photo:0 12px 24px rgba(0,0,0,.25);
+  --container:1200px; --gutter:24px; --frame:16px; --header-h:84px;
+}
+@media (max-width:767px){ :root{ --gutter:16px; --frame:8px; --header-h:68px; } }

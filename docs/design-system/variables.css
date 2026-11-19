@@ -1,0 +1,67 @@
+/* Burger in Casa — Design System v1 (19/11/2026) */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&family=Pacifico&display=swap');
+:root{
+  --frame-gradient: linear-gradient(180deg,#ECA33F 0%,#A62F25 100%);
+  --wine-900:#581010; --wine-800:#701818; --wine-700:#782820;
+  --yellow-title:#F8B010; --yellow-cta:#F0A818;
+  --red-button:#D83020; --red-button-alt:#D84028; --red-splash:#B02018; --red-splash-dark:#881810;
+  --cream-section:#F7F2DB; --cream-card:#F8EFD6;
+  --mustard-gradient: linear-gradient(90deg,#F49D14 0%,#EB8919 100%);
+  --wood:#84614B; --ink:#020000; --white:#FFFFFF;
+  --font-display:'Anton','Bebas Neue',Impact,sans-serif;
+  --font-body:'Poppins','Montserrat',Arial,sans-serif;
+  --font-script:'Pacifico',cursive;
+  --fs-hero:clamp(44px,7vw,96px); --fs-h2:clamp(30px,4vw,48px); --fs-h3:22px; --fs-body:16px; --fs-small:14px; --fs-button:15px;
+  --lh-display:1; --lh-heading:1.15; --lh-body:1.6;
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px; --s-10:128px;
+  --r-sm:6px; --r-md:12px; --r-lg:20px; --r-pill:999px;
+  --shadow-card:0 10px 30px rgba(88,16,16,.18); --shadow-button:0 6px 0 #881810; --shadow-photo:0 12px 24px rgba(0,0,0,.25);
+  --container:1200px; --gutter:24px; --frame:16px; --header-h:84px;
+}
+body{margin:0;padding:var(--frame);background:var(--frame-gradient);font-family:var(--font-body);font-size:var(--fs-body);line-height:var(--lh-body);color:var(--ink)}
+.page{background:var(--cream-section);border-radius:var(--r-md);overflow:hidden}
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+/* Header */
+.header{height:var(--header-h);background:var(--wine-900);display:flex;align-items:center;justify-content:space-between}
+.header__logo{height:60px;border-radius:var(--r-sm)}
+.header__nav a{color:var(--white);font-weight:600;text-transform:uppercase;font-size:var(--fs-small);margin:0 var(--s-4);text-decoration:none}
+.header__nav a:hover{color:var(--yellow-title)}
+/* Hero */
+.hero{position:relative;background:url(img/hero-defumado-burger.webp) right center/cover no-repeat,var(--wine-800);min-height:560px;display:flex;align-items:center}
+.hero__title{font-family:var(--font-display);font-size:var(--fs-hero);line-height:var(--lh-display);color:var(--yellow-title);text-transform:uppercase;margin:0}
+.hero__title span{color:var(--white);display:block}
+.hero__text{color:var(--white);max-width:420px;margin:var(--s-5) 0 var(--s-6)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:90px;background:url(img/borda-papel-rasgado.png) bottom/100% 100% no-repeat}
+/* Botões */
+.btn{display:inline-block;font-family:var(--font-body);font-weight:700;font-size:var(--fs-button);letter-spacing:.06em;text-transform:uppercase;padding:var(--s-4) var(--s-6);border-radius:var(--r-pill);border:0;cursor:pointer;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn--primary{background:var(--red-button);color:var(--white);box-shadow:var(--shadow-button)}
+.btn--cta{background:var(--yellow-cta);color:var(--ink)}
+.btn--secondary{background:var(--red-button-alt);color:var(--white)}
+/* Seções */
+.section{padding:var(--s-9) 0}
+.section__title{font-family:var(--font-display);font-size:var(--fs-h2);line-height:var(--lh-heading);text-transform:uppercase;color:var(--ink);text-align:center;margin:0 0 var(--s-7)}
+.band{position:relative;background:url(img/textura-pincelada-mostarda.png) center/100% 100% no-repeat;padding:var(--s-8) 0;text-align:center}
+.band__burgers{width:min(900px,100%);display:block;margin:0 auto}
+.floating{position:absolute;pointer-events:none;width:90px}
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-5)}
+.card{background:var(--cream-card);border-radius:var(--r-lg);padding:var(--s-6) var(--s-5);text-align:center;box-shadow:var(--shadow-card)}
+.card__img{width:180px;height:180px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow-photo);border:6px solid var(--white)}
+.card__title{font-family:var(--font-display);font-size:var(--fs-h3);text-transform:uppercase;margin:var(--s-4) 0 var(--s-2)}
+.card__price{color:var(--red-button);font-weight:700;font-size:20px}
+.splash{background:url(img/textura-respingo-vermelho.png) top/100% 260px no-repeat,var(--red-splash-dark);padding-top:200px}
+/* Footer */
+.footer{background:var(--red-splash-dark);color:var(--white);padding:var(--s-8) 0 var(--s-6)}
+.footer a{color:var(--yellow-title)}
+/* Mobile */
+@media (max-width:1023px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:767px){
+  :root{--gutter:16px;--frame:8px;--header-h:68px}
+  .header__nav{display:none}
+  .hero{min-height:620px;align-items:flex-start;padding-top:var(--s-7);background-position:65% bottom;background-size:auto 55%}
+  .section{padding:var(--s-8) 0}
+  .cards{grid-template-columns:1fr}
+  .card__img{width:150px;height:150px}
+  .floating{width:56px}
+}
